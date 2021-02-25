@@ -72,13 +72,13 @@ def snapshot():
         # Loop through companies and download price data from yahoo to CSV 
         for company in companies:
             symbol = company.split(',')[0]
-            dataframe = yf.download(symbol, start="2021-01-01", end="2021-01-27")
-            dataframe.to_csv('datasets/daily/Stocks/{}.csv'.format(symbol))
+            dataframe = yf.download(symbol, start="2021-01-01", end="2021-02-25")
+            dataframe.to_csv(f'datasets/daily/Stocks/{symbol}.csv')
             # If within index of crypto list, download price data for cryptos also 
             if index < len(cryptos):
                 symbol2 = cryptos[index].split(',')[0]
-                dataframe = yf.download(symbol2, start="2021-01-01", end="2021-01-27")
-                dataframe.to_csv('datasets/daily/Crypto/{}.csv'.format(symbol))
+                dataframe = yf.download(symbol2, start="2021-01-01", end="2021-02-25")
+                dataframe.to_csv(f'datasets/daily/Crypto/{symbol2}.csv')
                 index += 1
     return {
         'code': 'success'
